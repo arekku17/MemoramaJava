@@ -5,6 +5,7 @@
  */
 package vistas;
 
+import controlador.ControlAudio;
 import controlador.Galeria;
 import controlador.ListaEnlazada;
 import controlador.Nivel;
@@ -31,7 +32,7 @@ public class Niveles extends javax.swing.JFrame {
     
     ListaEnlazada lista = new ListaEnlazada();
     LinkedList<Nivel> listAux = new LinkedList<>();
-    
+    ControlAudio audio = new ControlAudio();
     Galeria carro = null;
     
     public final Icon getFoto(String nombre, JLabel lbl) {
@@ -46,8 +47,10 @@ public class Niveles extends javax.swing.JFrame {
     }
     
     public Niveles() {
+        this.setUndecorated(true);
         initComponents();
         this.setLocationRelativeTo(null);
+        
         
         lista.addFirst(new Nivel(2,"Animales"));
         lista.addFirst(new Nivel(1,"Frutas"));
@@ -142,6 +145,7 @@ public class Niveles extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void lblVolverMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblVolverMouseClicked
+        audio.playSound("click");
         Inicio frame2 = new Inicio();
         frame2.setVisible(true);
         this.dispose();
@@ -151,18 +155,22 @@ public class Niveles extends javax.swing.JFrame {
         lista.shift(1);
         listAux = lista.obtenerLista();
         pintar();
+        audio.playSound("click");
     }//GEN-LAST:event_lblAtrasMousePressed
 
     private void lblDelanteMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblDelanteMousePressed
          lista.shift(-1);
          listAux = lista.obtenerLista();
          pintar();
+         audio.playSound("click");
     }//GEN-LAST:event_lblDelanteMousePressed
 
     private void lblNivelMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblNivelMousePressed
+        audio.playSound("click");
         Dificultad frame2 = new Dificultad(listAux.get(0));
         frame2.setVisible(true);
         this.setVisible(false);
+        
     }//GEN-LAST:event_lblNivelMousePressed
 
     /**

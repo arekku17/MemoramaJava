@@ -59,8 +59,10 @@ public class Ganaste extends javax.swing.JFrame {
     }
     
     public Ganaste(int score, int total) {
+        this.setUndecorated(true);
         initComponents();
         this.setLocationRelativeTo(null);
+        
         this.score = score;
         this.total = total;
         audio.playSound("felicidades");

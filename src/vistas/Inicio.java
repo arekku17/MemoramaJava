@@ -5,6 +5,7 @@
  */
 package vistas;
 
+import controlador.ControlAudio;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Image;
@@ -25,6 +26,8 @@ public class Inicio extends javax.swing.JFrame {
      * @return 
      */
     
+    ControlAudio audio = new ControlAudio();
+    
     public final Icon getFoto(String nombre, JLabel lbl) {
         int ancho = lbl.getWidth();
         int alto = lbl.getHeight();
@@ -37,6 +40,7 @@ public class Inicio extends javax.swing.JFrame {
     }
     
     public Inicio() {
+        this.setUndecorated(true);
         initComponents();
         this.setLocationRelativeTo(null);
         lblLogo.setIcon(getFoto("logo", lblLogo));
@@ -137,6 +141,7 @@ public class Inicio extends javax.swing.JFrame {
 
     private void btnJugarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnJugarMouseEntered
         btnJugar.setFont(new Font("Roboto Bold", Font.BOLD, 60));
+        audio.playSound("encima");
                 
     }//GEN-LAST:event_btnJugarMouseEntered
 
@@ -146,6 +151,7 @@ public class Inicio extends javax.swing.JFrame {
 
     private void btnInfoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnInfoMouseEntered
         btnInfo.setFont(new Font("Roboto Bold", Font.BOLD, 60));
+        audio.playSound("encima");
     }//GEN-LAST:event_btnInfoMouseEntered
 
     private void btnInfoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnInfoMouseExited
@@ -154,6 +160,7 @@ public class Inicio extends javax.swing.JFrame {
 
     private void btnSalirMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSalirMouseEntered
         btnSalir.setFont(new Font("Roboto Bold", Font.BOLD, 60));
+        audio.playSound("encima");
     }//GEN-LAST:event_btnSalirMouseEntered
 
     private void btnSalirMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSalirMouseExited
@@ -161,12 +168,14 @@ public class Inicio extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSalirMouseExited
 
     private void btnJugarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnJugarMouseClicked
+        audio.playSound("click");
         Niveles frame2 = new Niveles();
         frame2.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnJugarMouseClicked
 
     private void btnSalirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSalirMouseClicked
+        audio.playSound("click");
         this.dispose();
     }//GEN-LAST:event_btnSalirMouseClicked
 

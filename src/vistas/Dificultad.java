@@ -5,6 +5,7 @@
  */
 package vistas;
 
+import controlador.ControlAudio;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Image;
@@ -27,6 +28,7 @@ public class Dificultad extends javax.swing.JFrame {
      */
     
     Nivel nvl = null;
+    ControlAudio audio = new ControlAudio();
     
     public final Icon getFoto(String nombre, JLabel lbl) {
         int ancho = lbl.getWidth();
@@ -40,6 +42,7 @@ public class Dificultad extends javax.swing.JFrame {
     }
     
     public Dificultad(Nivel nvl) {
+        this.setUndecorated(true);
         initComponents();
         this.setLocationRelativeTo(null);
         lblVolver.setIcon(getFoto("arrowLeft", lblVolver));
@@ -196,6 +199,7 @@ public class Dificultad extends javax.swing.JFrame {
     private void btnDficilMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnDficilMouseEntered
         btnDficil.setBackground(new Color(32,128,66));
         jLabel4.setForeground(new Color(218,219,189));
+        audio.playSound("encima");
     }//GEN-LAST:event_btnDficilMouseEntered
 
     private void btnDficilMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnDficilMouseExited
@@ -206,6 +210,7 @@ public class Dificultad extends javax.swing.JFrame {
     private void btnMedioMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMedioMouseEntered
         btnMedio.setBackground(new Color(32,128,66));
         jLabel5.setForeground(new Color(218,219,189));
+        audio.playSound("encima");
     }//GEN-LAST:event_btnMedioMouseEntered
 
     private void btnMedioMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMedioMouseExited
@@ -216,6 +221,7 @@ public class Dificultad extends javax.swing.JFrame {
     private void btnFacilMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnFacilMouseEntered
         btnFacil.setBackground(new Color(32,128,66));
         jLabel6.setForeground(new Color(218,219,189));
+        audio.playSound("encima");
     }//GEN-LAST:event_btnFacilMouseEntered
 
     private void btnFacilMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnFacilMouseExited
@@ -225,12 +231,14 @@ public class Dificultad extends javax.swing.JFrame {
 
     private void btnFacilMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnFacilMousePressed
         MemoFacil juego = new MemoFacil(nvl,0);
+        audio.playSound("click");
         juego.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_btnFacilMousePressed
 
     private void btnMedioMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMedioMousePressed
         MemoFacil juego = new MemoFacil(nvl,1);
+        audio.playSound("click");
         juego.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_btnMedioMousePressed

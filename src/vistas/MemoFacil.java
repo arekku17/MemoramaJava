@@ -11,13 +11,10 @@ import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import controlador.Nivel;
+import controlador.ControlAudio;
 import java.util.Collections;
 import java.util.LinkedList;
 import java.util.Timer;
-import javax.sound.sampled.AudioInputStream;
-import javax.sound.sampled.AudioSystem;
-import javax.sound.sampled.Clip;
-import java.net.URL;
 
 /**
  *
@@ -38,6 +35,7 @@ public class MemoFacil extends javax.swing.JFrame {
     LinkedList<Carta> listAux = new LinkedList<>();
     LinkedList<Carta> listaCartas = new LinkedList<>();
     LinkedList<Carta> correctas = new LinkedList<>();
+    ControlAudio audio = new ControlAudio();
     Carta primera = null;
     Carta segunda = null;
     int posPrimera = 0;
@@ -86,8 +84,10 @@ public class MemoFacil extends javax.swing.JFrame {
     public MemoFacil(Nivel nvl, int dificultad) {
         this.nvl = nvl;
         this.dificultad = dificultad;
+        this.setUndecorated(true);
         initComponents();
         this.setLocationRelativeTo(null);
+        
 
         //Se cargan y barajan las cartas
         cargarCartas();
@@ -113,24 +113,6 @@ public class MemoFacil extends javax.swing.JFrame {
         lblFind2.setIcon(reescalar(correctas.get(1).getImagen(), lblFind2));
         lblFind3.setIcon(reescalar(correctas.get(2).getImagen(), lblFind3));
         lblFind4.setIcon(reescalar(correctas.get(3).getImagen(), lblFind4));
-    }
-
-    public static synchronized void playSound(final String url) {
-        new Thread(new Runnable() {
-            // The wrapper thread is unnecessary, unless it blocks on the
-            // Clip finishing; see comments.
-            public void run() {
-                try {
-                    URL audio = this.getClass().getClassLoader().getResource("sounds/" + url + ".wav");
-                    AudioInputStream inputStream = AudioSystem.getAudioInputStream(audio);
-                    Clip clip = AudioSystem.getClip();
-                    clip.open(inputStream);
-                    clip.start();
-                } catch (Exception e) {
-                    System.err.println(e.getMessage());
-                }
-            }
-        }).start();
     }
 
     /**
@@ -363,12 +345,15 @@ public class MemoFacil extends javax.swing.JFrame {
                     numCartasFind++;
                     //Se aumenta el score
                     score += 10;
+                    audio.playSound("correcto");
                 } else {
                     //Se voltean las cartas porque estaba mal
                     resetCartas(posPrimera, posSegunda);
+                    audio.playSound("incorrecto");
                     if (score > 0) {
                         //Se resta score
                         score -= 10;
+                        
                     }
                 }
             }
@@ -381,9 +366,9 @@ public class MemoFacil extends javax.swing.JFrame {
         }
 
         if (numCartasFind == size) {
-            Ganaste frame2 = new Ganaste(score, size * 10);
+            Ganaste frame2 = new Ganaste(score, size*10);
             frame2.setVisible(true);
-            this.dispose();
+            this.setVisible(false);
         }
     }
 
@@ -396,6 +381,7 @@ public class MemoFacil extends javax.swing.JFrame {
     private void lblCarta1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblCarta1MousePressed
         if (listaCartas.get(0).isFind() == false) {
             lblCarta1.setIcon(reescalar(listaCartas.get(0).getImagen(), lblCarta1));
+            audio.playSound("voltear");
             Timer t = new java.util.Timer();
             t.schedule(
                     new java.util.TimerTask() {
@@ -415,6 +401,7 @@ public class MemoFacil extends javax.swing.JFrame {
     private void lblCarta2MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblCarta2MousePressed
         if (listaCartas.get(1).isFind() == false) {
             lblCarta2.setIcon(reescalar(listaCartas.get(1).getImagen(), lblCarta2));
+            audio.playSound("voltear");
             Timer t = new java.util.Timer();
             t.schedule(
                     new java.util.TimerTask() {
@@ -432,6 +419,7 @@ public class MemoFacil extends javax.swing.JFrame {
     private void lblCarta3MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblCarta3MousePressed
         if (listaCartas.get(2).isFind() == false) {
             lblCarta3.setIcon(reescalar(listaCartas.get(2).getImagen(), lblCarta3));
+            audio.playSound("voltear");
             Timer t = new java.util.Timer();
             t.schedule(
                     new java.util.TimerTask() {
@@ -449,6 +437,7 @@ public class MemoFacil extends javax.swing.JFrame {
     private void lblCarta4MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblCarta4MousePressed
         if (listaCartas.get(3).isFind() == false) {
             lblCarta4.setIcon(reescalar(listaCartas.get(3).getImagen(), lblCarta4));
+            audio.playSound("voltear");
             Timer t = new java.util.Timer();
             t.schedule(
                     new java.util.TimerTask() {
@@ -466,6 +455,7 @@ public class MemoFacil extends javax.swing.JFrame {
     private void lblCarta5MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblCarta5MousePressed
         if (listaCartas.get(4).isFind() == false) {
             lblCarta5.setIcon(reescalar(listaCartas.get(4).getImagen(), lblCarta5));
+            audio.playSound("voltear");
             Timer t = new java.util.Timer();
             t.schedule(
                     new java.util.TimerTask() {
@@ -483,6 +473,7 @@ public class MemoFacil extends javax.swing.JFrame {
     private void lblCarta6MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblCarta6MousePressed
         if (listaCartas.get(5).isFind() == false) {
             lblCarta6.setIcon(reescalar(listaCartas.get(5).getImagen(), lblCarta6));
+            audio.playSound("voltear");
             Timer t = new java.util.Timer();
             t.schedule(
                     new java.util.TimerTask() {
@@ -500,6 +491,7 @@ public class MemoFacil extends javax.swing.JFrame {
     private void lblCarta7MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblCarta7MousePressed
         if (listaCartas.get(6).isFind() == false) {
             lblCarta7.setIcon(reescalar(listaCartas.get(6).getImagen(), lblCarta7));
+            audio.playSound("voltear");
             Timer t = new java.util.Timer();
             t.schedule(
                     new java.util.TimerTask() {
@@ -517,6 +509,7 @@ public class MemoFacil extends javax.swing.JFrame {
     private void lblCarta8MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblCarta8MousePressed
         if (listaCartas.get(7).isFind() == false) {
             lblCarta8.setIcon(reescalar(listaCartas.get(7).getImagen(), lblCarta8));
+            audio.playSound("voltear");
             Timer t = new java.util.Timer();
             t.schedule(
                     new java.util.TimerTask() {
