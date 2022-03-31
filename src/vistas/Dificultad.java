@@ -115,6 +115,9 @@ public class Dificultad extends javax.swing.JFrame {
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 btnDficilMouseExited(evt);
             }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                btnDficilMousePressed(evt);
+            }
         });
         btnDficil.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -237,11 +240,18 @@ public class Dificultad extends javax.swing.JFrame {
     }//GEN-LAST:event_btnFacilMousePressed
 
     private void btnMedioMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMedioMousePressed
-        MemoFacil juego = new MemoFacil(nvl,1);
+        MemoMedio juego = new MemoMedio(nvl,1);
         audio.playSound("click");
         juego.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_btnMedioMousePressed
+
+    private void btnDficilMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnDficilMousePressed
+        MemoDificil juego = new MemoDificil(nvl,2);
+        audio.playSound("click");
+        juego.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_btnDficilMousePressed
 
     /**
      * @param args the command line arguments

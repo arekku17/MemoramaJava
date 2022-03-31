@@ -62,7 +62,6 @@ public class Inicio extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         btnSalir = new javax.swing.JLabel();
-        btnInfo = new javax.swing.JLabel();
         btnJugar = new javax.swing.JLabel();
         lblLogo = new javax.swing.JLabel();
 
@@ -100,20 +99,7 @@ public class Inicio extends javax.swing.JFrame {
                 btnSalirMouseExited(evt);
             }
         });
-        jPanel1.add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 360, -1, -1));
-
-        btnInfo.setFont(new java.awt.Font("Roboto Light", 0, 60)); // NOI18N
-        btnInfo.setForeground(new java.awt.Color(218, 219, 189));
-        btnInfo.setText("INFO");
-        btnInfo.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btnInfoMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                btnInfoMouseExited(evt);
-            }
-        });
-        jPanel1.add(btnInfo, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 260, -1, -1));
+        jPanel1.add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 320, -1, -1));
 
         btnJugar.setFont(new java.awt.Font("Roboto Light", 0, 60)); // NOI18N
         btnJugar.setForeground(new java.awt.Color(218, 219, 189));
@@ -129,7 +115,7 @@ public class Inicio extends javax.swing.JFrame {
                 btnJugarMouseExited(evt);
             }
         });
-        jPanel1.add(btnJugar, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 170, -1, -1));
+        jPanel1.add(btnJugar, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 210, -1, -1));
 
         lblLogo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jPanel1.add(lblLogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, 470, 340));
@@ -148,15 +134,6 @@ public class Inicio extends javax.swing.JFrame {
     private void btnJugarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnJugarMouseExited
         btnJugar.setFont(new Font("Roboto Light", Font.PLAIN, 60));
     }//GEN-LAST:event_btnJugarMouseExited
-
-    private void btnInfoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnInfoMouseEntered
-        btnInfo.setFont(new Font("Roboto Bold", Font.BOLD, 60));
-        audio.playSound("encima");
-    }//GEN-LAST:event_btnInfoMouseEntered
-
-    private void btnInfoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnInfoMouseExited
-         btnInfo.setFont(new Font("Roboto Light", Font.PLAIN, 60));
-    }//GEN-LAST:event_btnInfoMouseExited
 
     private void btnSalirMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSalirMouseEntered
         btnSalir.setFont(new Font("Roboto Bold", Font.BOLD, 60));
@@ -215,7 +192,6 @@ public class Inicio extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel btnInfo;
     private javax.swing.JLabel btnJugar;
     private javax.swing.JLabel btnSalir;
     private javax.swing.JLabel jLabel2;
