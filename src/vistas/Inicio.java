@@ -6,6 +6,7 @@
 package vistas;
 
 import controlador.ControlAudio;
+import controlador.Cronometro;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Image;
@@ -27,6 +28,7 @@ public class Inicio extends javax.swing.JFrame {
      */
     
     ControlAudio audio = new ControlAudio();
+    Cronometro cronometro;
     
     public final Icon getFoto(String nombre, JLabel lbl) {
         int ancho = lbl.getWidth();
@@ -44,6 +46,11 @@ public class Inicio extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
         lblLogo.setIcon(getFoto("logo", lblLogo));
+        this.cronometro = Cronometro.getInstance();
+        cronometro.setLblHours(hours);
+        cronometro.setLblMinutes(minutes1);
+        cronometro.setLblSeconds(seconds);
+        cronometro.actualizarLabels();
     }
     
     
@@ -60,6 +67,9 @@ public class Inicio extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
+        seconds = new javax.swing.JLabel();
+        minutes1 = new javax.swing.JLabel();
+        hours = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         btnSalir = new javax.swing.JLabel();
         btnJugar = new javax.swing.JLabel();
@@ -79,6 +89,21 @@ public class Inicio extends javax.swing.JFrame {
         jLabel3.setForeground(new java.awt.Color(218, 219, 189));
         jLabel3.setText("Desarrollado por: José Alejandro Pérez Arenas");
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 500, 940, -1));
+
+        seconds.setFont(new java.awt.Font("Roboto Black", 1, 24)); // NOI18N
+        seconds.setForeground(new java.awt.Color(218, 219, 189));
+        seconds.setText(":00");
+        jPanel1.add(seconds, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 10, -1, -1));
+
+        minutes1.setFont(new java.awt.Font("Roboto Black", 1, 24)); // NOI18N
+        minutes1.setForeground(new java.awt.Color(218, 219, 189));
+        minutes1.setText(":00");
+        jPanel1.add(minutes1, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 10, -1, -1));
+
+        hours.setFont(new java.awt.Font("Roboto Black", 1, 24)); // NOI18N
+        hours.setForeground(new java.awt.Color(218, 219, 189));
+        hours.setText("00");
+        jPanel1.add(hours, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 10, -1, -1));
 
         jLabel2.setFont(new java.awt.Font("Roboto Black", 1, 60)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(218, 219, 189));
@@ -153,7 +178,7 @@ public class Inicio extends javax.swing.JFrame {
 
     private void btnSalirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSalirMouseClicked
         audio.playSound("click");
-        this.dispose();
+        System.exit(0);
     }//GEN-LAST:event_btnSalirMouseClicked
 
     /**
@@ -194,10 +219,13 @@ public class Inicio extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel btnJugar;
     private javax.swing.JLabel btnSalir;
+    private javax.swing.JLabel hours;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JLabel lblLogo;
+    private javax.swing.JLabel minutes1;
+    private javax.swing.JLabel seconds;
     // End of variables declaration//GEN-END:variables
 }

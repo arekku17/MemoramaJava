@@ -6,6 +6,7 @@
 package vistas;
 
 import controlador.ControlAudio;
+import controlador.Cronometro;
 import controlador.Galeria;
 import controlador.ListaEnlazada;
 import controlador.Nivel;
@@ -34,6 +35,7 @@ public class Niveles extends javax.swing.JFrame {
     LinkedList<Nivel> listAux = new LinkedList<>();
     ControlAudio audio = new ControlAudio();
     Galeria carro = null;
+    Cronometro cronometro;
     
     public final Icon getFoto(String nombre, JLabel lbl) {
         int ancho = lbl.getWidth();
@@ -61,7 +63,11 @@ public class Niveles extends javax.swing.JFrame {
         lblVolver.setIcon(getFoto("arrowLeft", lblVolver));
         lblAtras.setIcon(getFoto("arrowLeft", lblAtras));
         lblDelante.setIcon(getFoto("arrowRight", lblDelante));
-       
+        this.cronometro = Cronometro.getInstance();
+        cronometro.setLblHours(hours);
+        cronometro.setLblMinutes(minutes1);
+        cronometro.setLblSeconds(seconds);
+        cronometro.actualizarLabels();
         pintar();
     }
     
@@ -88,6 +94,9 @@ public class Niveles extends javax.swing.JFrame {
         lblNivel = new javax.swing.JLabel();
         lblDelante = new javax.swing.JLabel();
         lblAtras = new javax.swing.JLabel();
+        hours = new javax.swing.JLabel();
+        minutes1 = new javax.swing.JLabel();
+        seconds = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -138,6 +147,21 @@ public class Niveles extends javax.swing.JFrame {
             }
         });
         jPanel1.add(lblAtras, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 210, 150, 150));
+
+        hours.setFont(new java.awt.Font("Roboto Black", 1, 24)); // NOI18N
+        hours.setForeground(new java.awt.Color(218, 219, 189));
+        hours.setText("00");
+        jPanel1.add(hours, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 10, -1, -1));
+
+        minutes1.setFont(new java.awt.Font("Roboto Black", 1, 24)); // NOI18N
+        minutes1.setForeground(new java.awt.Color(218, 219, 189));
+        minutes1.setText(":00");
+        jPanel1.add(minutes1, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 10, -1, -1));
+
+        seconds.setFont(new java.awt.Font("Roboto Black", 1, 24)); // NOI18N
+        seconds.setForeground(new java.awt.Color(218, 219, 189));
+        seconds.setText(":00");
+        jPanel1.add(seconds, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 10, -1, -1));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 560));
 
@@ -210,6 +234,7 @@ public class Niveles extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel hours;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
@@ -217,6 +242,8 @@ public class Niveles extends javax.swing.JFrame {
     private javax.swing.JLabel lblDelante;
     private javax.swing.JLabel lblNivel;
     private javax.swing.JLabel lblVolver;
+    private javax.swing.JLabel minutes1;
+    private javax.swing.JLabel seconds;
     private javax.swing.JLabel txtNivel;
     // End of variables declaration//GEN-END:variables
 }

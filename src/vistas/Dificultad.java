@@ -6,6 +6,7 @@
 package vistas;
 
 import controlador.ControlAudio;
+import controlador.Cronometro;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Image;
@@ -29,6 +30,7 @@ public class Dificultad extends javax.swing.JFrame {
     
     Nivel nvl = null;
     ControlAudio audio = new ControlAudio();
+    Cronometro cronometro;
     
     public final Icon getFoto(String nombre, JLabel lbl) {
         int ancho = lbl.getWidth();
@@ -50,7 +52,11 @@ public class Dificultad extends javax.swing.JFrame {
         lblMedio.setIcon(getFoto("iconMedio", lblMedio));
         lblFacil.setIcon(getFoto("iconFacil", lblDificil));
         this.nvl = nvl;
-        System.out.println(nvl.getNivel());
+        this.cronometro = Cronometro.getInstance();
+        cronometro.setLblHours(hours);
+        cronometro.setLblMinutes(minutes1);
+        cronometro.setLblSeconds(seconds);
+        cronometro.actualizarLabels();
     }
     
     
@@ -78,6 +84,9 @@ public class Dificultad extends javax.swing.JFrame {
         btnFacil = new javax.swing.JPanel();
         lblFacil = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
+        seconds = new javax.swing.JLabel();
+        minutes1 = new javax.swing.JLabel();
+        hours = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -188,6 +197,21 @@ public class Dificultad extends javax.swing.JFrame {
 
         jPanel1.add(btnFacil, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 160, 190, 290));
 
+        seconds.setFont(new java.awt.Font("Roboto Black", 1, 24)); // NOI18N
+        seconds.setForeground(new java.awt.Color(218, 219, 189));
+        seconds.setText(":00");
+        jPanel1.add(seconds, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 10, -1, -1));
+
+        minutes1.setFont(new java.awt.Font("Roboto Black", 1, 24)); // NOI18N
+        minutes1.setForeground(new java.awt.Color(218, 219, 189));
+        minutes1.setText(":00");
+        jPanel1.add(minutes1, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 10, -1, -1));
+
+        hours.setFont(new java.awt.Font("Roboto Black", 1, 24)); // NOI18N
+        hours.setForeground(new java.awt.Color(218, 219, 189));
+        hours.setText("00");
+        jPanel1.add(hours, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 10, -1, -1));
+
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 560));
 
         pack();
@@ -293,6 +317,7 @@ public class Dificultad extends javax.swing.JFrame {
     private javax.swing.JPanel btnDficil;
     private javax.swing.JPanel btnFacil;
     private javax.swing.JPanel btnMedio;
+    private javax.swing.JLabel hours;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -304,5 +329,7 @@ public class Dificultad extends javax.swing.JFrame {
     private javax.swing.JLabel lblFacil;
     private javax.swing.JLabel lblMedio;
     private javax.swing.JLabel lblVolver;
+    private javax.swing.JLabel minutes1;
+    private javax.swing.JLabel seconds;
     // End of variables declaration//GEN-END:variables
 }

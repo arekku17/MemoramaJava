@@ -12,6 +12,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import controlador.Nivel;
 import controlador.ControlAudio;
+import controlador.CronometroJuego;
 import java.util.Collections;
 import java.util.LinkedList;
 import java.util.Timer;
@@ -42,6 +43,7 @@ public class MemoFacil extends javax.swing.JFrame {
     int posSegunda = 0;
     int score = 0;
     int numCartasFind = 0;
+    CronometroJuego cronometro = new CronometroJuego();
 
     public void cargarCartas() {
         for (int i = 0; i < 16; i++) {
@@ -105,6 +107,12 @@ public class MemoFacil extends javax.swing.JFrame {
         lblCarta7.setIcon(getFoto("carta", lblCarta8));
         pintarFind();
         lblScore2.setText("PUNTAJE: " + score);
+        
+        //Cronometro del juego
+        cronometro.setLblHours(hours);
+        cronometro.setLblMinutes(minutes1);
+        cronometro.setLblSeconds(seconds);
+        cronometro.start();
 
     }
 
@@ -143,6 +151,9 @@ public class MemoFacil extends javax.swing.JFrame {
         lblFind1 = new javax.swing.JLabel();
         lblFind2 = new javax.swing.JLabel();
         lblFind3 = new javax.swing.JLabel();
+        hours = new javax.swing.JLabel();
+        minutes1 = new javax.swing.JLabel();
+        seconds = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -258,6 +269,21 @@ public class MemoFacil extends javax.swing.JFrame {
         lblFind3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/carta.png"))); // NOI18N
         jPanel1.add(lblFind3, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 470, 60, 80));
 
+        hours.setFont(new java.awt.Font("Roboto Black", 1, 24)); // NOI18N
+        hours.setForeground(new java.awt.Color(218, 219, 189));
+        hours.setText("00");
+        jPanel1.add(hours, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 10, -1, -1));
+
+        minutes1.setFont(new java.awt.Font("Roboto Black", 1, 24)); // NOI18N
+        minutes1.setForeground(new java.awt.Color(218, 219, 189));
+        minutes1.setText(":00");
+        jPanel1.add(minutes1, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 10, -1, -1));
+
+        seconds.setFont(new java.awt.Font("Roboto Black", 1, 24)); // NOI18N
+        seconds.setForeground(new java.awt.Color(218, 219, 189));
+        seconds.setText(":00");
+        jPanel1.add(seconds, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 10, -1, -1));
+
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 560));
 
         pack();
@@ -369,6 +395,7 @@ public class MemoFacil extends javax.swing.JFrame {
             Ganaste frame2 = new Ganaste(score, size*10);
             frame2.setVisible(true);
             this.setVisible(false);
+            cronometro.setState(false);
         }
     }
 
@@ -376,6 +403,7 @@ public class MemoFacil extends javax.swing.JFrame {
         Inicio frame2 = new Inicio();
         frame2.setVisible(true);
         this.dispose();
+        cronometro.setState(false);
     }//GEN-LAST:event_lblSalirMouseClicked
 
     private void lblCarta1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblCarta1MousePressed
@@ -563,6 +591,7 @@ public class MemoFacil extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel hours;
     private javax.swing.JLabel iconNivel;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
@@ -582,5 +611,7 @@ public class MemoFacil extends javax.swing.JFrame {
     private javax.swing.JLabel lblFind4;
     private javax.swing.JLabel lblSalir;
     private javax.swing.JLabel lblScore2;
+    private javax.swing.JLabel minutes1;
+    private javax.swing.JLabel seconds;
     // End of variables declaration//GEN-END:variables
 }
